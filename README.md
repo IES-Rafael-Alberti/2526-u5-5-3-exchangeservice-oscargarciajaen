@@ -411,6 +411,16 @@ Identifica **al menos 3 casos de prueba de tu batería** y explica:
 
 Incluye enlaces a los tests correspondientes.
 
+**Respuesta:** 
+
+Este test cubre la clase de equivalencia inválida, estoy validando el comportamiento con un parámetro negativo
+
+Código --> https://github.com/IES-Rafael-Alberti/2526-u5-5-3-exchangeservice-oscargarciajaen/blob/fd97a49907b155ca4cc32fa0af1cfd595a89fad0/src/test/kotlin/ExchangeServiceDesignedBatteryTest.kt#L37-L41
+
+Este test cubre la clase de equivalencia válida, aquí se valida el correcto funcionamiento con un parámetro esperado.
+
+Código --> https://github.com/IES-Rafael-Alberti/2526-u5-5-3-exchangeservice-oscargarciajaen/blob/fd97a49907b155ca4cc32fa0af1cfd595a89fad0/src/test/kotlin/ExchangeServiceDesignedBatteryTest.kt#L59-L63
+
 
 #### 🔹 2) CE f) Se han efectuado pruebas unitarias de clases y funciones
 
@@ -426,6 +436,15 @@ Justifica por qué este test cumple con el concepto de prueba unitaria según el
 
 Incluye enlace al test.
 
+**Respuesta:**
+
+Estoy probando el método exchange que es el que realiza un cambio de divisa.
+
+He aislado la lógica de la clase de la que depende debido a que he implementado un mock.
+
+La entrada proporcionada es "10" y la verifico con el método shouldBe() que me da una salida correcta "9L"
+
+Código --> https://github.com/IES-Rafael-Alberti/2526-u5-5-3-exchangeservice-oscargarciajaen/blob/fd97a49907b155ca4cc32fa0af1cfd595a89fad0/src/test/kotlin/ExchangeServiceDesignedBatteryTest.kt#L77-L83
 
 #### 🔹 3) CE g) Se han implementado pruebas automáticas
 
@@ -442,6 +461,15 @@ Incluye enlace a:
 * configuración (build.gradle.kts o similar)
 * ejecución de tests
 
+**Respuesta:**
+
+Utilizo el plugin de kotest en IntelliJ.
+
+Los test los ejecuto desde la terminal con el comando "./gradlew test"
+
+El propio test verifica que el comportamiento de la función es correcto.
+
+Configuración --> https://github.com/IES-Rafael-Alberti/2526-u5-5-3-exchangeservice-oscargarciajaen/blob/fd97a49907b155ca4cc32fa0af1cfd595a89fad0/build.gradle.kts#L12-L17
 
 #### 🔹 4) CE h) Se han documentado las incidencias detectadas
 
@@ -457,6 +485,16 @@ Relaciona esto con la importancia de documentar incidencias en el proceso de pru
 
 Incluye enlace al test implicado.
 
+**Respuesta**
+
+La detecto el test "Debe intentar una segunda ruta intermedia si la primera falla usando mock."
+
+La función depende de que el resto de las rutas funcionen, si no el programa lanzaría una excepción.
+
+Debería de modificarse la función para que en vez de lanzar una excepción se continuase con la vida del programa.
+
+Código --> https://github.com/IES-Rafael-Alberti/2526-u5-5-3-exchangeservice-oscargarciajaen/blob/fd97a49907b155ca4cc32fa0af1cfd595a89fad0/src/test/kotlin/ExchangeServiceDesignedBatteryTest.kt#L85-L93
+
 
 #### 🔹 5) CE i) Se han utilizado dobles de prueba para aislar los componentes durante las pruebas
 
@@ -471,6 +509,20 @@ Analiza el uso de dobles de prueba en tu batería y explica:
 Relaciona tu explicación con la necesidad de reducir el acoplamiento en pruebas unitarias 
 
 Incluye enlaces a los tests donde se utilicen.
+
+**Respuesta** 
+
+El objetivo del test "Debe convertir correctamente usando una tasa directa con stub" es comprobar el correcto funcionamiento de la función rate, si usase el programa sin el uso del stub no podría comprobar el resultado que debe dar.
+
+Código --> https://github.com/IES-Rafael-Alberti/2526-u5-5-3-exchangeservice-oscargarciajaen/blob/fd97a49907b155ca4cc32fa0af1cfd595a89fad0/src/test/kotlin/ExchangeServiceDesignedBatteryTest.kt#L59-L63
+
+El objetivo del test "Debe resolver una conversión cruzada cuando la tasa directa no exista usando mock" es comprobar que puede resolver conversiones cruzadas, sin el mock no se podría debido a que no se podría conocer el resultado.
+
+Código --> https://github.com/IES-Rafael-Alberti/2526-u5-5-3-exchangeservice-oscargarciajaen/blob/fd97a49907b155ca4cc32fa0af1cfd595a89fad0/src/test/kotlin/ExchangeServiceDesignedBatteryTest.kt#L77-L83
+
+El objetivo de este test "Debe hacer conversión cruzada y verificar el orden exacto de llamadas" es ver las llamadas que realiza el método, no se podrían conocer sin el uso del spy.
+
+Código --> https://github.com/IES-Rafael-Alberti/2526-u5-5-3-exchangeservice-oscargarciajaen/blob/fd97a49907b155ca4cc32fa0af1cfd595a89fad0/src/test/kotlin/ExchangeServiceDesignedBatteryTest.kt#L107-L125
 
 
 ## Fuente conceptual
